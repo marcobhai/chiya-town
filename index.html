@@ -1,103 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chiya Town | Modern Cafe</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chiya Town | Modern Cafe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#b6782c;
+      --secondary:#3a2a1a;
+      --light:#f7f3ee;
+      --dark:#111;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{background:var(--light);color:#222}
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    header{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:16px 6%;background:#fff;position:sticky;top:0;z-index:100;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1)
+    }
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo img{width:50px;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.3))}
+    .logo h1{font-size:22px;font-weight:700;color:var(--secondary)}
+    nav a{margin-left:26px;text-decoration:none;color:#333;font-weight:500}
+    nav a:hover{color:var(--primary)}
 
-<style>
-:root{
-  --primary:#b6782c;
-  --secondary:#3a2a1a;
-  --light:#f7f3ee;
-  --dark:#111;
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:var(--light);color:#222}
+    /* HERO */
+    .hero{
+      min-height:90vh;display:flex;align-items:center;justify-content:space-between;
+      padding:0 6%;background:linear-gradient(135deg,#fff,var(--light))
+    }
+    .hero-text{max-width:520px}
+    .hero-text h2{font-size:48px;font-weight:800;line-height:1.15}
+    .hero-text span{color:var(--primary)}
+    .hero-text p{margin:22px 0;color:#555}
+    .btn{
+      padding:14px 34px;border-radius:40px;background:var(--primary);color:#fff;
+      text-decoration:none;font-weight:500;display:inline-block;
+      box-shadow:0 14px 30px rgba(182,120,44,0.5)
+    }
+    .hero img{max-width:380px;transform:rotate(-5deg);filter:drop-shadow(0 28px 35px rgba(0,0,0,0.35))}
 
-header{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:16px 6%;background:#fff;position:sticky;top:0;z-index:100;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1)
-}
-.logo{display:flex;align-items:center;gap:12px}
-.logo img{width:50px}
-.logo h1{font-size:22px;font-weight:700;color:var(--secondary)}
-nav a{margin-left:26px;text-decoration:none;color:#333;font-weight:500}
-nav a:hover{color:var(--primary)}
+    section{padding:90px 6%}
+    .section-title{text-align:center;margin-bottom:60px}
+    .section-title h3{font-size:36px;font-weight:700;color:var(--secondary)}
+    .section-title p{color:#666}
 
-.hero{
-  min-height:90vh;display:flex;align-items:center;justify-content:space-between;
-  padding:0 6%;background:linear-gradient(135deg,#fff,var(--light))
-}
-.hero-text{max-width:520px}
-.hero-text h2{font-size:48px;font-weight:800}
-.hero-text span{color:var(--primary)}
-.hero-text p{margin:22px 0;color:#555}
-.btn{
-  padding:14px 34px;border-radius:40px;background:var(--primary);color:#fff;
-  text-decoration:none;font-weight:500;display:inline-block
-}
-.hero img{max-width:380px}
+    .about-box{
+      background:#fff;border-radius:28px;padding:60px;text-align:center;
+      box-shadow:0 22px 50px rgba(0,0,0,0.15);font-size:18px
+    }
 
-section{padding:90px 6%}
-.section-title{text-align:center;margin-bottom:60px}
-.section-title h3{font-size:36px;color:var(--secondary)}
+    .menu-board{
+      background:linear-gradient(135deg,#111,#2a1d14);color:#fff;
+      border-radius:32px;padding:60px;box-shadow:0 28px 60px rgba(0,0,0,0.45)
+    }
+    .menu-item{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px dashed rgba(255,255,255,0.25)}
+    .price{background:var(--primary);padding:6px 18px;border-radius:20px;font-weight:600}
 
-.about-box{
-  background:#fff;border-radius:28px;padding:60px;text-align:center;
-  box-shadow:0 22px 50px rgba(0,0,0,0.15)
-}
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
+    .service-card{
+      background:#fff;border-radius:26px;padding:36px;text-align:center;
+      box-shadow:0 18px 40px rgba(0,0,0,0.12);transition:0.3s
+    }
+    .service-card:hover{transform:translateY(-12px)}
 
-.menu-board{
-  background:#111;color:#fff;border-radius:32px;padding:60px
-}
-.menu-item{
-  display:flex;justify-content:space-between;
-  padding:18px 0;border-bottom:1px dashed #555
-}
-.price{background:var(--primary);padding:6px 18px;border-radius:20px}
+    /* GALLERY */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:22px
+    }
+    .gallery img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      border-radius:22px;
+      box-shadow:0 18px 40px rgba(0,0,0,0.18);
+      transition:0.4s
+    }
+    .gallery img:hover{
+      transform:scale(1.06)
+    }
 
-.services{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px
-}
-.service-card{
-  background:#fff;border-radius:26px;padding:36px;text-align:center
-}
+    /* MAP */
+    .map-box{
+      background:#fff;border-radius:30px;padding:20px;
+      box-shadow:0 22px 50px rgba(0,0,0,0.15);overflow:hidden
+    }
+    .map-box iframe{width:100%;height:420px;border:0;border-radius:22px}
 
-.gallery{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px
-}
-.gallery img{
-  width:100%;height:220px;object-fit:cover;border-radius:22px
-}
+    .contact{
+      background:#fff;border-radius:30px;padding:50px;
+      box-shadow:0 22px 50px rgba(0,0,0,0.15);max-width:720px;margin:auto
+    }
+    input,textarea{width:100%;padding:15px;border-radius:14px;border:1px solid #ddd;margin-bottom:15px;font-size:15px}
+    textarea{height:140px;resize:none}
 
-.map-box{
-  background:#fff;border-radius:30px;padding:20px
-}
-.map-box iframe{width:100%;height:420px;border:0;border-radius:22px}
+    footer{text-align:center;padding:26px;background:var(--dark);color:#fff;margin-top:80px}
 
-.contact{
-  background:#fff;border-radius:30px;padding:50px;
-  max-width:720px;margin:auto
-}
-input,textarea{
-  width:100%;padding:15px;border-radius:14px;border:1px solid #ddd;margin-bottom:15px
-}
-
-footer{
-  text-align:center;padding:26px;background:var(--dark);color:#fff;margin-top:80px
-}
-</style>
+    @media(max-width:900px){
+      header{flex-direction:column;gap:10px}
+      nav a{margin:0 12px}
+      .hero{flex-direction:column;text-align:center;padding-top:70px}
+      .hero img{margin-top:40px;max-width:300px}
+      .hero-text h2{font-size:38px}
+    }
+    @media(max-width:500px){
+      .hero-text h2{font-size:32px}
+      section{padding:70px 5%}
+      .menu-board{padding:40px}
+      .map-box iframe{height:300px}
+    }
+  </style>
 </head>
-
 <body>
 
 <header>
   <div class="logo">
-    <img src="chiya.jpg" alt="Logo">
+    <img src="chiya.jpg" alt="Chiya Town Logo">
     <h1>Chiya Town</h1>
   </div>
   <nav>
@@ -113,65 +135,113 @@ footer{
 <section class="hero" id="home">
   <div class="hero-text">
     <h2>Make <span>Tea</span><br>Instead of Enemies</h2>
-    <p>Premium Nepali chiya, calm vibes, friendly service.</p>
+    <p>Premium Nepali chiya, calm vibes, and friendly service for every moment.</p>
     <a href="#menu" class="btn">View Menu</a>
   </div>
-  <img src="chiya.jpg" alt="Chiya">
+  <img src="chiya.jpg" alt="Chiya Town">
 </section>
 
 <section id="about">
   <div class="section-title"><h3>About Chiya Town</h3></div>
   <div class="about-box">
-    Modern Nepali café built around warmth and quality tea.
+    Chiya Town is a modern Nepali café built around warmth, quality tea and meaningful conversations. We serve smiles with every cup.
   </div>
 </section>
 
 <section id="menu">
-  <div class="section-title"><h3>Our Menu</h3></div>
+  <div class="section-title">
+    <h3>Our Menu</h3>
+    <p>Fresh • Hygienic • Affordable</p>
+  </div>
+
   <div class="menu-board">
+    <h4 style="margin-bottom:20px;color:#f5c27a">☕ Tea Specials</h4>
     <div class="menu-item"><h4>Milk Chiya</h4><span class="price">Rs. 40</span></div>
     <div class="menu-item"><h4>Masala Chiya</h4><span class="price">Rs. 60</span></div>
+    <div class="menu-item"><h4>Ginger Chiya</h4><span class="price">Rs. 50</span></div>
+    <div class="menu-item"><h4>Black Tea</h4><span class="price">Rs. 30</span></div>
+    <div class="menu-item"><h4>Green Tea</h4><span class="price">Rs. 50</span></div>
+
+    <h4 style="margin:30px 0 20px;color:#f5c27a">☕ Coffee</h4>
+    <div class="menu-item"><h4>Milk Coffee</h4><span class="price">Rs. 90</span></div>
+    <div class="menu-item"><h4>Black Coffee</h4><span class="price">Rs. 70</span></div>
+    <div class="menu-item"><h4>Cold Coffee</h4><span class="price">Rs. 120</span></div>
+
+    <h4 style="margin:30px 0 20px;color:#f5c27a">🥤 Cold Drinks</h4>
+    <div class="menu-item"><h4>Lemon Soda</h4><span class="price">Rs. 60</span></div>
+    <div class="menu-item"><h4>Cold Drinks</h4><span class="price">Rs. 50</span></div>
+    <div class="menu-item"><h4>Mineral Water</h4><span class="price">Rs. 25</span></div>
+
+    <h4 style="margin:30px 0 20px;color:#f5c27a">🍟 Snacks</h4>
     <div class="menu-item"><h4>Veg Momo</h4><span class="price">Rs. 120</span></div>
+    <div class="menu-item"><h4>Buff Momo</h4><span class="price">Rs. 150</span></div>
+    <div class="menu-item"><h4>French Fries</h4><span class="price">Rs. 100</span></div>
+    <div class="menu-item"><h4>Chowmein</h4><span class="price">Rs. 120</span></div>
+    <div class="menu-item"><h4>Sandwich</h4><span class="price">Rs. 90</span></div>
   </div>
 </section>
 
 <section id="services">
-  <div class="section-title"><h3>Our Services</h3></div>
+  <div class="section-title"><h3>Our Services</h3><p>We serve beyond tea</p></div>
   <div class="services">
-    <div class="service-card">☕ Quality Tea</div>
-    <div class="service-card">🎉 Party Orders</div>
-    <div class="service-card">🤝 Friendly Service</div>
+    <div class="service-card">☕ Quality Tea & Snacks</div>
+    <div class="service-card">🎪 Stall & Event Service</div>
+    <div class="service-card">🎉 Program & Party Orders</div>
+    <div class="service-card">🤝 Friendly Customer Care</div>
   </div>
 </section>
 
 <section id="gallery">
-  <div class="section-title"><h3>Gallery</h3></div>
+  <div class="section-title"><h3>Our Gallery</h3><p>Moments from Chiya Town</p></div>
   <div class="gallery">
-    <img src="ch.png">
-    <img src="ci.png">
+    <img src="ch.png" alt="Chiya Town Cafe">
+    <img src="ci.png" alt="Chiya Town Interior">
+    <img src="ch.png" alt="Chiya Moments">
+    <img src="ci.png" alt="Tea & Snacks">
   </div>
 </section>
 
-<section id="location">
-  <div class="section-title"><h3>Our Location</h3></div>
-  <div class="map-box">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!"></iframe>
+ <div class="map-box">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.5317062701715!2d85.32098967471691!3d27.700865076186314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1900601d0825%3A0xe16d01e30ef84323!2zQ2hpeWEgdG93buKYlQ!5e0!3m2!1sen!2snp!4v1767404257760!5m2!1sen!2snp"
+      width="100%"
+      height="450"
+      style="border:0; border-radius:20px;"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
   </div>
 </section>
 
 <section id="contact">
-  <div class="section-title"><h3>Contact Us</h3></div>
+  <div class="section-title"><h3>Contact Us</h3><p>Message goes directly to Chiya Town</p></div>
   <div class="contact">
     <form onsubmit="sendWhatsApp(event)">
-      <input id="name" placeholder="Your Name" required>
-      <textarea id="msg" placeholder="Message"></textarea>
-      <button class="btn">Send</button>
+      <input type="text" id="name" placeholder="Your Name" required>
+      <textarea id="msg" placeholder="Your Orders Here"></textarea>
+      <button class="btn" style="border:none;width:100%;cursor:pointer">Send Message</button>
     </form>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Chiya Town Cafe</p>
+  <div style="max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;align-items:center">
+    <div>
+      <h3 style="margin-bottom:10px">Chiya Town Cafe</h3>
+      <p>Warm tea, peaceful vibes & friendly service.</p>
+    </div>
+    <div>
+      <h4 style="margin-bottom:10px">Contact</h4>
+      <p>📞 Contact No: <strong>98XXXXXXXX</strong></p>
+      <p>👤 Founder: <strong>Sonu Kr.Kushwaha</strong></p>
+    </div>
+    <div>
+      <h4 style="margin-bottom:10px">Follow Us</h4>
+      <a href="https://facebook.com" target="_blank" style="color:#fff;text-decoration:none">🌐 Facebook</a>
+    </div>
+  </div>
+  <p style="margin-top:25px;font-size:14px">© 2026 Chiya Town Cafe. All Rights Reserved.</p>
 </footer>
 
 <script>
@@ -179,7 +249,9 @@ function sendWhatsApp(e){
   e.preventDefault();
   const name=document.getElementById('name').value;
   const msg=document.getElementById('msg').value;
-  window.location.href=`https://wa.me/9819245876?text=Name:%20${name}%0AMessage:%20${msg}`;
+  const phone='9819245876';
+  const text=`Name: ${name}%0AMessage: ${msg}`;
+  window.location.href=`https://wa.me/${phone}?text=${text}`;
 }
 </script>
 
